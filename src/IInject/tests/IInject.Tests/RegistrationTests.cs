@@ -9,9 +9,9 @@ namespace IInject.Tests
         [Fact]
         public void Test1()
         {
-            var registry = new Registry();
+            var registry = new Registry(null);
             var request = new Mock<IRegistrationRequest>();
-            registry.Add(request.Object);
+            registry.Register(request.Object);
         }
     }
 }
