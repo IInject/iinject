@@ -40,10 +40,17 @@ namespace IInject
         /// <summary>
         /// 
         /// </summary>
-        public IEnumerator<IStrategy> GetEnumerator()
-        {
-            return _strategies.GetEnumerator();
-        }
+        public IEnumerator<IStrategy> GetEnumerator() => _strategies.GetEnumerator();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void AttachStrategy(IStrategy strategy) => _strategies.Add(strategy);
 
         /// <summary>
         /// 
@@ -53,14 +60,6 @@ namespace IInject
             foreach (var strategy in _strategies) {
                 strategy.Execute(request);
             }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
         }
     }
 }
